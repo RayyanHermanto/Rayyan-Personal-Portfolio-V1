@@ -24,7 +24,7 @@ export default function SectionFour() {
       image: "/images/guardianforest.jpg",
       link: "https://github.com/kamu/landing-animasi",
       logos: ["/icons/godot.svg"],
-      description: "**Guardian Forest** is a game project developed for the GEMASTIK 2024 competition. It features strategic pathfinding mechanics, modular design using Scriptable Objects, smooth animations with tweening, and a clean architecture following the Model-View-Controller (MVC) pattern. The game combines technical depth with engaging gameplay, designed to showcase problem-solving and programming skills in a competitive environment."
+      description: "Guardian Forest is a game project developed for the GEMASTIK 2024 competition. It features strategic pathfinding mechanics, modular design using Scriptable Objects, smooth animations with tweening, and a clean architecture following the Model-View-Controller (MVC) pattern. The game combines technical depth with engaging gameplay, designed to showcase problem-solving and programming skills in a competitive environment."
     },
   ];
 
@@ -249,6 +249,7 @@ export default function SectionFour() {
                     opacity: 0,
                     maxHeight: 0,
                     overflow: "hidden",
+                    textAlign: "justify"
                   }}
                 >
                   {p.description || "No Description."}

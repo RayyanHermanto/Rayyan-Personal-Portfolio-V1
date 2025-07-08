@@ -13,11 +13,15 @@ export default function PageWithCanvas() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSecondSection, setIsSecondSection] = useState(false);
   const [isBeyondSecondSection, setIsBeyondSecondSection] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    setIsMobile(window.innerWidth <= 768);
+
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 3000);
+
     return () => clearTimeout(timer);
   }, []);
 
@@ -33,6 +37,15 @@ export default function PageWithCanvas() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  if (isMobile) {
+    return (
+      <div className="mobile-overlay">
+        <img src="/images/under-dev.jpeg" alt="Under Development" />
+        <p>Sorry, mobile version is under development</p>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -69,7 +82,7 @@ export default function PageWithCanvas() {
       )}
 
       {/* Main Content */}
-      <div style={{ height: "300vh", position: "relative" }}>
+      <div className="desktop-content" style={{ height: "300vh", position: "relative" }}>
         <div
           style={{
             position: "absolute",
