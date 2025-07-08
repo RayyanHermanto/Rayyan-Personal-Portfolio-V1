@@ -1,0 +1,21 @@
+.section{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+.leftcontent{
+    flex: 1;
+}
+.rightcontent{
+    flex: 2;
+    padding-left: 300px;
+    z-index: 1;
+    position: relative;
+}
+h2{
+    margin-bottom: 20px;
+}
+p{
+    text-align: justify;
+}

@@ -1,0 +1,82 @@
+.section-three {
+    height: 100vh;
+    position: relative;
+    background-color: black;
+    color: #fff;
+    overflow: hidden;
+  }
+  
+  .section-three__title {
+    position: absolute;
+    top: 2vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    z-index: 2;
+    transition: opacity 0.5s ease;
+  }
+  
+  .section-three__line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    background: linear-gradient(to bottom, #ff66cc, #ff99cc);
+    border-radius: 2px;
+    transform: translateX(-50%);
+    transition: height 0.2s ease;
+    margin-top: 40px;
+    box-shadow: 0 0 15px 5px rgba(255, 102, 204, 0.6);
+  }
+  
+  .section-three__dot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background-color: #ff66cc;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 4px rgba(255, 102, 204, 0.5);
+    transition: top 0.2s ease;
+  }
+  
+  .section-three__text {
+    position: absolute;
+    transform: translateX(-50%);
+    transition: opacity 0.5s ease;
+  }
+  
+  .section-three__text.left.top {
+    top: 10vh;
+    left: calc(50% - 250px);
+  }
+  
+  .section-three__text.left.bottom {
+    top: 50vh;
+    left: calc(50% - 290px);
+  }
+  
+  .section-three__text.right.top {
+    top: 10vh;
+    left: calc(50% + 150px);
+  }
+  
+  .section-three__text.right.bottom {
+    top: 50vh;
+    left: calc(50% + 150px);
+  }
+  
+  .section-three__text h2 {
+    color: #c77dff;
+    margin-bottom: 4px;
+  }
+  
+  .section-three__text p {
+    color: #aaa;
+    margin-top: 0px;
+    font-size: 0.9rem;
+  }
+  
