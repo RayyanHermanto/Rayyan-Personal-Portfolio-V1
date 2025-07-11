@@ -1,8 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
+import styles from "./style/SectionThree.module.css";
 
 export default function SectionThree() {
   const sectionRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile(); // Cek saat pertama render
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,79 +43,43 @@ export default function SectionThree() {
   const lineHeight = Math.min(scrollProgress * 150, 75);
   const lineHeightVh = `${lineHeight}vh`;
 
+  useEffect(() => {
+    console.log("lineHeight:", lineHeight);
+    console.log("lineHeightVh:", lineHeightVh);
+  }, [lineHeight]);
+
   return (
-    <section
-      ref={sectionRef}
-      style={{
-        height: "100vh",
-        position: "relative",
-        backgroundColor: "black",
-        color: "#fff",
-        overflow: "hidden",
-      }}
-    >
+    <section ref={sectionRef} className={styles.section}>
       {/* Judul di atas garis */}
       <div
-        style={{
-          position: "absolute",
-          top: "2vh",
-          left: "50%",
-          transform: "translateX(-50%)",
-          color: "#fff",
-          fontSize: "1.5rem",
-          fontWeight: "bold",
-          textAlign: "center",
-          zIndex: 2,
-          opacity: scrollProgress > 0.1 ? 1 : 0,
-          transition: "opacity 0.5s ease",
-        }}
+        className={styles.title}
+        style={{ opacity: scrollProgress > 0.1 ? 1 : 0 }}
       >
         My Career and Experiences
       </div>
 
       {/* Garis vertikal */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: "50%",
-          width: "4px",
-          height: lineHeightVh,
-          background: "linear-gradient(to bottom, #ff66cc, #ff99cc)",
-          borderRadius: "2px",
-          transform: "translateX(-50%)",
-          transition: "height 0.2s ease",
-          marginTop: "40px",
-          boxShadow: "0 0 15px 5px rgba(255, 102, 204, 0.6)", // Efek glow
-        }}
-      />
+      <div className={styles.verticalLine} style={{ height: lineHeightVh }} />
+
       {/* Titik di ujung bawah garis */}
       {lineHeight >= 10 && (
         <div
-          style={{
-            position: "absolute",
-            top: `calc(${lineHeight}vh + 30px)`, // ikuti tinggi garis
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "12px",
-            height: "12px",
-            backgroundColor: "#ff66cc",
-            borderRadius: "50%",
-            boxShadow: "0 0 10px 4px rgba(255, 102, 204, 0.5)",
-            transition: "top 0.2s ease", // transisi sinkron dengan garis
-          }}
+          className={styles.endpoint}
+          style={{ top: `calc(${lineHeight}vh + 30px)` }}
         />
       )}
 
       {/* Teks kiri atas */}
       <div
+        className={styles.text1}
         style={{
-          position: "absolute",
-          top: "10vh",
-          left: "calc(50% - 250px)",
-          transform: "translateX(-50%)",
-          opacity: lineHeight > 50 ? 1 : 0,
-          transition: "opacity 0.5s ease",
+          opacity: isMobile
+            ? lineHeight > 15
+              ? 1
+              : 0
+            : lineHeight > 20
+              ? 1
+              : 0,
         }}
       >
         <h2 style={{ color: "#c77dff", marginBottom: "4px" }}>
@@ -114,13 +92,15 @@ export default function SectionThree() {
 
       {/* Teks kiri bawah */}
       <div
+        className={styles.text2}
         style={{
-          position: "absolute",
-          top: "50vh",
-          left: "calc(50% - 290px)",
-          transform: "translateX(-50%)",
-          opacity: lineHeight > 70 ? 1 : 0,
-          transition: "opacity 0.5s ease",
+          opacity: isMobile
+            ? lineHeight > 60
+              ? 1
+              : 0
+            : lineHeight > 55
+              ? 1
+              : 0,
         }}
       >
         <h2 style={{ color: "#c77dff", marginBottom: "4px" }}>
@@ -132,13 +112,15 @@ export default function SectionThree() {
 
       {/* Teks kanan atas */}
       <div
+        className={styles.text1_date}
         style={{
-          position: "absolute",
-          top: "10vh",
-          left: "calc(50% + 150px)",
-          transform: "translateX(-50%)",
-          opacity: lineHeight > 50 ? 1 : 0,
-          transition: "opacity 0.5s ease",
+          opacity: isMobile
+            ? lineHeight > 17
+              ? 1
+              : 0
+            : lineHeight > 20
+              ? 1
+              : 0,
         }}
       >
         <h2 style={{ color: "#c77dff", marginBottom: "4px" }}>
@@ -148,13 +130,15 @@ export default function SectionThree() {
 
       {/* Teks kanan bawah */}
       <div
+        className={styles.text2_date}
         style={{
-          position: "absolute",
-          top: "50vh",
-          left: "calc(50% + 150px)",
-          transform: "translateX(-50%)",
-          opacity: lineHeight > 70 ? 1 : 0,
-          transition: "opacity 0.5s ease",
+          opacity: isMobile
+            ? lineHeight > 62
+              ? 1
+              : 0
+            : lineHeight > 55
+              ? 1
+              : 0,
         }}
       >
         <h2 style={{ color: "#c77dff", marginBottom: "4px" }}>

@@ -1,0 +1,88 @@
+.section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  position: relative; /* Tambahkan ini agar glow absolute mengikuti section */
+}
+
+.leftcontent {
+  flex: 1;
+}
+
+.rightcontent {
+  flex: 2;
+  padding-left: 300px;
+  z-index: 1;
+  position: relative;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+p {
+  text-align: justify;
+}
+
+/* Efek glow */
+.glowtop,
+.glowbottom {
+  position: absolute; /* Ubah dari fixed */
+  left: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glowtop {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(128, 0, 128, 0.5), transparent);
+  filter: blur(20px);
+}
+
+.glowbottom {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(128, 0, 128, 0.5), transparent);
+  filter: blur(20px);
+}
+
+/* Hanya tampil di mobile */
+.mobileglow {
+  display: none;
+}
+
+/* ✅ RESPONSIVE UNTUK MOBILE */
+@media (max-width: 768px) {
+  .section {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+    overflow-y: auto;
+    height: 100vh;
+  }
+
+  .leftcontent {
+    display: none;
+  }
+
+  .rightcontent {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    flex: unset;
+    margin-top: 33vh;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify;
+  }
+
+  .mobileglow {
+    display: block;
+  }
+}

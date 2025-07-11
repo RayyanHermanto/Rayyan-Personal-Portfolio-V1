@@ -16,8 +16,17 @@ export default function PageWithCanvas() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    setIsMobile(window.innerWidth <= 768);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
 
+    checkMobile(); // cek saat pertama render
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 3000);
@@ -37,15 +46,6 @@ export default function PageWithCanvas() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  if (isMobile) {
-    return (
-      <div className="mobile-overlay">
-        <img src="/images/under-dev.jpeg" alt="Under Development" />
-        <p>Sorry, mobile version is under development</p>
-      </div>
-    );
-  }
 
   return (
     <>
@@ -82,11 +82,14 @@ export default function PageWithCanvas() {
       )}
 
       {/* Main Content */}
-      <div className="desktop-content" style={{ height: "300vh", position: "relative" }}>
+      <div
+        className="desktop-content"
+        style={{ height: "300vh", position: "relative" }}
+      >
         <div
           style={{
             position: "absolute",
-            top: isSecondSection ? "100vh" : 0,
+            top: isMobile ? 0 : isSecondSection ? "100vh" : 0,
             left: 0,
             width: "100vw",
             height: "100vh",
@@ -101,10 +104,18 @@ export default function PageWithCanvas() {
           </ScrollProvider>
         </div>
 
-        <div id="section1"><SectionOne /></div>
-        <div id="section2"><SectionTwo /></div>
-        <div id="section3"><SectionThree /></div>
-        <div id="section4"><SectionFour /></div>
+        <div id="section1">
+          <SectionOne />
+        </div>
+        <div id="section2">
+          <SectionTwo />
+        </div>
+        <div id="section3">
+          <SectionThree />
+        </div>
+        <div id="section4">
+          <SectionFour />
+        </div>
         <Footer />
       </div>
     </>

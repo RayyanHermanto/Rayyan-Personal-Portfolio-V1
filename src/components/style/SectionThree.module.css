@@ -1,0 +1,115 @@
+.section {
+  height: 100vh;
+  position: relative;
+  background-color: black;
+  color: #fff;
+  overflow: hidden;
+}
+
+.title {
+  position: absolute;
+  top: 2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  z-index: 2;
+  transition: opacity 0.5s ease;
+}
+
+/* Vertikal line */
+.verticalLine {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: height 0.2s ease;
+  margin-top: 40px;
+  box-shadow: 0 0 15px 5px rgba(255, 102, 204, 0.6);
+  background: linear-gradient(to bottom, #ff66cc, #ff99cc);
+}
+
+/* Endpoint bulat */
+.endpoint {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background-color: #ff66cc;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 4px rgba(255, 102, 204, 0.5);
+  transition: top 0.2s ease;
+}
+
+/* Text kiri atas */
+.text1 {
+  position: absolute;
+  top: 10vh;
+  left: calc(50% - 250px);
+  transform: translateX(-50%);
+  transition: opacity 0.5s ease;
+}
+
+/* Text kiri bawah */
+.text2 {
+  position: absolute;
+  top: 50vh;
+  left: calc(50% - 290px);
+  transform: translateX(-50%);
+  transition: opacity 0.5s ease;
+}
+
+/* Text kanan atas */
+.text1_date {
+  position: absolute;
+  top: 10vh;
+  left: calc(50% + 150px);
+  transform: translateX(-50%);
+  transition: opacity 0.5s ease;
+}
+
+/* Text kanan bawah */
+.text2_date {
+  position: absolute;
+  top: 50vh;
+  left: calc(50% + 150px);
+  transform: translateX(-50%);
+  transition: opacity 0.5s ease;
+}
+@media (max-width: 768px) {
+  /* Pindahkan garis vertikal ke kanan layar */
+  .verticalLine {
+    left: auto; /* Hapus kiri */
+    right: 40px; /* Pindah ke kanan */
+    transform: none; /* Hapus translateX(-50%) */
+  }
+
+  /* Endpoint ke kanan layar */
+  .endpoint {
+    left: auto;
+    right: 36px;
+    transform: none;
+  }
+
+  /* Semua teks ke kiri layar */
+  .text1,
+  .text2,
+  .text1_date,
+  .text2_date {
+    left: 20px; /* Geser ke kiri */
+    transform: none; /* Hapus translateX */
+    text-align: left;
+    font-size: 0.9rem;
+  }
+  .text1_date {
+    top: 17vh;
+  }
+  .text2_date {
+    top: 57vh;
+  }
+}

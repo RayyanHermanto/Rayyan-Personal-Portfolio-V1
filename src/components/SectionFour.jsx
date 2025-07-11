@@ -17,14 +17,16 @@ export default function SectionFour() {
       image: "/images/server_tanamAi.png",
       link: "https://github.com/RayyanHermanto/server_capstone",
       logos: ["/icons/nodejs.svg", "/icons/tensorflow.svg", "/icons/hapi.svg"],
-      description: "Tanam AI (Back-End) is a group project in which I independently developed the entire backend as the final assignment of the Dicoding bootcamp. The backend was built using Node.js with the Hapi framework and follows a RESTful API architecture. I was solely responsible for developing, deploying, and integrating the backend system.",
+      description:
+        "Tanam AI (Back-End) is a group project in which I independently developed the entire backend as the final assignment of the Dicoding bootcamp. The backend was built using Node.js with the Hapi framework and follows a RESTful API architecture. I was solely responsible for developing, deploying, and integrating the backend system.",
     },
     {
       title: "Guardian Forest",
       image: "/images/guardianforest.jpg",
       link: "https://github.com/kamu/landing-animasi",
       logos: ["/icons/godot.svg"],
-      description: "Guardian Forest is a game project developed for the GEMASTIK 2024 competition. It features strategic pathfinding mechanics, modular design using Scriptable Objects, smooth animations with tweening, and a clean architecture following the Model-View-Controller (MVC) pattern. The game combines technical depth with engaging gameplay, designed to showcase problem-solving and programming skills in a competitive environment."
+      description:
+        "Guardian Forest is a game project developed for the GEMASTIK 2024 competition. It features strategic pathfinding mechanics, modular design using Scriptable Objects, smooth animations with tweening, and a clean architecture following the Model-View-Controller (MVC) pattern. The game combines technical depth with engaging gameplay, designed to showcase problem-solving and programming skills in a competitive environment.",
     },
   ];
 
@@ -249,7 +251,7 @@ export default function SectionFour() {
                     opacity: 0,
                     maxHeight: 0,
                     overflow: "hidden",
-                    textAlign: "justify"
+                    textAlign: "justify",
                   }}
                 >
                   {p.description || "No Description."}
