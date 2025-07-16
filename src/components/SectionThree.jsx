@@ -43,11 +43,6 @@ export default function SectionThree() {
   const lineHeight = Math.min(scrollProgress * 150, 75);
   const lineHeightVh = `${lineHeight}vh`;
 
-  useEffect(() => {
-    console.log("lineHeight:", lineHeight);
-    console.log("lineHeightVh:", lineHeightVh);
-  }, [lineHeight]);
-
   return (
     <section ref={sectionRef} className={styles.section}>
       {/* Judul di atas garis */}

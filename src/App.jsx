@@ -9,11 +9,16 @@ import SectionFour from "./components/SectionFour";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 
-export default function PageWithCanvas() {
+export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSecondSection, setIsSecondSection] = useState(false);
   const [isBeyondSecondSection, setIsBeyondSecondSection] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Hanya expose ke global agar bisa diakses dari Console
+    window.version = __APP_VERSION__;
+  }, []);
 
   useEffect(() => {
     const checkMobile = () => {
