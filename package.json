@@ -1,7 +1,7 @@
 {
   "name": "porto",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,7 +9,6 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "release": "npm version patch && npm run build"
-
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
