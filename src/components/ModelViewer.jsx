@@ -108,8 +108,8 @@ const AnimatedModel = forwardRef((props, ref) => {
     const y = -(event.clientY / window.innerHeight) * 2 + 1;
 
     // Rotasi horizontal (left-right)
-    const maxRotationY = Math.PI / 8; // 22.5 derajat
-    const maxRotationX = Math.PI / 8; // 11.25 derajat
+    const maxRotationY = Math.PI / 6; // 22.5 derajat
+    const maxRotationX = Math.PI / 6; // 11.25 derajat
 
     // Mapping ke rotasi bone
     neckBone.rotation.y = x * maxRotationY;
