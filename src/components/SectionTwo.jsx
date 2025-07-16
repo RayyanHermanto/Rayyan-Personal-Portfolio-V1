@@ -30,6 +30,14 @@ export default function SectionTwo() {
             and
             <strong> user-friendly</strong> digital experiences.
           </p>
+          <a
+            href="https://drive.google.com/file/d/1ISMNtjpo9eRhwj-m7FbBtkkOsZUcXLXc/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.downloadButton}
+          >
+            View CV
+          </a>
         </div>
       </section>
     </div>
