@@ -71,12 +71,54 @@ const AnimatedModel = forwardRef((props, ref) => {
     const planeMaterial = new THREE.MeshStandardMaterial({ color: "black" });
     const planeMesh = new THREE.Mesh(planeGeometry, planeMaterial);
 
-    planeMesh.position.set(-0.17, 1.96, -2.6); // posisi di belakang model
-    planeMesh.rotation.set(0, 0, 0); // tegak lurus
+    planeMesh.position.set(-0.17, 1.96, -2.6);
+    planeMesh.rotation.set(0, 0, 0);
     planeMesh.receiveShadow = true;
 
     scene.add(planeMesh);
   }, [scene]);
+
+  useEffect(() => {
+    // === Tampilkan semua bone di console
+    scene.traverse((child) => {
+      if (child.isBone) {
+        console.log("Bone:", child.name, child);
+      }
+    });
+
+    // === Tambahkan SkeletonHelper visual (opsional)
+    const skinned = scene.getObjectByProperty("type", "SkinnedMesh");
+    if (skinned && skinned.skeleton) {
+      const helper = new THREE.SkeletonHelper(skinned);
+      helper.visible = true;
+      scene.add(helper);
+    }
+  }, [scene]);
+
+  useEffect(() => {
+  const neckBone = scene.getObjectByName("Neck"); // atau nama bone leher kamu
+
+  if (!neckBone) {
+    console.warn("Neck bone tidak ditemukan.");
+    return;
+  }
+
+  const onMouseMove = (event) => {
+    const x = (event.clientX / window.innerWidth) * 2 - 1;
+    const y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    // Rotasi horizontal (left-right)
+    const maxRotationY = Math.PI / 8; // 22.5 derajat
+    const maxRotationX = Math.PI / 8; // 11.25 derajat
+
+    // Mapping ke rotasi bone
+    neckBone.rotation.y = x * maxRotationY;
+    neckBone.rotation.x = -y * maxRotationX;
+  };
+
+  window.addEventListener("mousemove", onMouseMove);
+  return () => window.removeEventListener("mousemove", onMouseMove);
+}, [scene]);
 
   useImperativeHandle(ref, () => ({
     scene,
@@ -87,6 +129,7 @@ const AnimatedModel = forwardRef((props, ref) => {
 
   return <primitive object={scene} />;
 });
+
 
 // ================== CameraDebugger ==================
 function CameraDebugger({ setCameraInfo, modelRef }) {
@@ -244,36 +287,6 @@ function CameraDebugger({ setCameraInfo, modelRef }) {
       enableZoom={false}
       enablePan={false}
     />
-  );
-}
-
-function SceneLights() {
-  const targetRef = useRef();
-
-  useEffect(() => {
-    if (targetRef.current) {
-      targetRef.current.position.set(0, 0, 0); // arah spotlight
-    }
-  }, []);
-
-  return (
-    <>
-      <spotLight
-        position={[-0.15, 2.05, 1.18]}
-        intensity={2}
-        angle={0.4}
-        penumbra={0.5}
-        decay={2}
-        distance={10}
-        color="white"
-        castShadow
-        target={targetRef.current}
-      />
-      <primitive
-        object={targetRef.current || new THREE.Object3D()}
-        ref={targetRef}
-      />
-    </>
   );
 }
 
