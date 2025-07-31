@@ -114,6 +114,16 @@ export default function SectionFour() {
       image: "/images/certificate/certificate_13.jpg",
       link: "https://drive.google.com/file/d/1bScEyX3OzB3y8A3GNbXlsVSBoNyZqJ5k/view?usp=sharing",
     },
+    {
+      title: "Certificate Of Completion DBS Coding Camp",
+      image: "/images/certificate/certificate_14.jpg",
+      link: "https://drive.google.com/file/d/1lufDQl-Rnw_oqzMriT0Uc6W5SEasQcmZ/view?usp=sharing",
+    },
+    {
+      title: "English For Business Communication",
+      image: "/images/certificate/certificate_15.jpg",
+      link: "https://drive.google.com/file/d/1svFpy-FML4RD7uZJUb61kXH3EnPyxey6/view?usp=sharing",
+    },
   ];
   return (
     <section
